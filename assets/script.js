@@ -11,6 +11,16 @@ function writePassword() {
 }
 
 
+
+var lowerCase = true;
+var upperCase = true;
+var numeric = true;
+var specialCharacters = true;
+
+
+alert: (The password is: "");
+
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
@@ -18,17 +28,20 @@ generateBtn.addEventListener("click", writePassword);
 // Acceptance Criteria
 // GIVEN I need a new, secure password
 // WHEN I click the button to generate a password
+  // enabled button in css
 // THEN I am presented with a series of prompts for password criteria
 // WHEN prompted for password criteria
 // THEN I select which criteria to include in the password
 // WHEN prompted for the length of the password
 // THEN I choose a length of at least 8 characters and no more than 128 characters
-  // if length of password >= 8 <= 128
+  // (string)  
+// if length of password >= 8 <= 128
   // the password is valid
   // else
   // the password is invalid
 // WHEN asked for character types to include in the password
 // THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
+  // (Booleon)
   // var lowercase = true/false
   // var uppercase = true/false
   // var numeric = true/false
