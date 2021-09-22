@@ -1,4 +1,10 @@
 // Assignment Code
+var lowerCaseArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+];
+var upperCaseArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+];
+var numeralsArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specialSymbolsArr = ["!", "@", "#", "$", "%", "&", "*"];
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
@@ -7,23 +13,24 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   
   passwordText.value = password;
-  
 }
 
 // begin function
 function generatePassword() {
   var options = askUser();
   console.log(options)
-  return "Your password is:  "
+  var choices = []
+  if(options.lowerCase) choices = choices.concat (lowerCaseArr);
+  if(options.specialSymbols) choices = choices.concat (specialSymbolsArr);
+  if(options.upperCase) choices = choices.concat (upperCaseArr);
+  if(options.numerals) choices = choices.concat (numeralsArr);
+  var password = "";
+  for(var i = 0; i < Number(options.passLength); i++) {
+    var index = Math.floor(Math.random() * choices.length);
+    password = password + choices[index];
+  }
+  return password
 }
-
-// identify variable values
-var lowerCaseArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
-];
-var upperCaseArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
-];
-var numeralsArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialSymbolsArr = ["!", "@", "#", "$", "%", "&", "*"];
 
 // ask user for preferences for password
 function askUser() {
@@ -49,33 +56,3 @@ function askUser() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-// Acceptance Criteria
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-  // DONE; enabled button in css
-// THEN I am presented with a series of prompts for password criteria
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-  // Use rock, paper, scissors example
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters 
-  // if length of password >= 8 <= 128
-  // the password is valid
-  // else
-  // the password is invalid
-// WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-  // (Booleon)
-  // var lowercase = true/false
-  // var uppercase = true/false
-  // var numeric = true/false
-  // var special characters = true/false
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
-  // alert("The password is: ...")
