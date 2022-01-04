@@ -43,9 +43,9 @@ function askUser() {
 
   // password needs to be greater than "8" and less than "128"
   // if a number less than "8" or greater than "128" is chosen, the alert will ask for a valid length
-  if(passLength < 8 || passLength >= 128) {
+  if(passLength < 8 || passLength > 129) {
     alert("Please select a valid length.");
-    return askUser(); 
+    return; 
   }
   var optionsObj = {
     lowerCase, upperCase, numerals, specialSymbols, passLength
